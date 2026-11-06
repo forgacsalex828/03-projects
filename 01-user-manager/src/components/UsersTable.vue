@@ -12,8 +12,10 @@ function handleSelectUser(user) {
 
 async function handleDeleteClick(userId) {
   try {
-    await removeUser(userId)
-  } catch (error) {
+    const confirmDelete = confirm('Are you sure you want to delete this user?')
+    if(confirmDelete) {
+      await removeUser(userId )} 
+    } catch(error) {
     console.log('error deleting user:', error)
   }
 }
