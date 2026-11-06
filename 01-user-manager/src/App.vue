@@ -18,6 +18,7 @@ try {
     <CreateUserForm/>
     <UsersTable/>
   </div>
+  
 
 </template>
 
