@@ -10,7 +10,6 @@ try {
   console.error('Error fetching users:', error);
 }
 
-
 </script>
 
 <template>
