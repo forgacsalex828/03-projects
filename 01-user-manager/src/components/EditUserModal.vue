@@ -11,13 +11,17 @@ const props = defineProps( {
 
 const closeButton = ref()
 
-const userFormData = ref( props.user)
+const userFormData = ref({ ...props.user })
 const { modifyUser } = useUserStore()
 
+function selectInputText(event) {
+  event.target.select()
+}
 
 watch (
   () => props.user,
-  (newUser) => { userFormData.value = { ...newUser}}
+  (newUser) => { userFormData.value = { ...newUser } },
+  { immediate: true }
 )
 
 
@@ -57,19 +61,19 @@ async function handleSaveButtonClick() {
             <div class="mb-3">
               <label for="firstName">First Name</label>
               <input class="form-control" type="text" name="firstName" id="firstName" required
-              v-model="userFormData.firstName" />
+              v-model="userFormData.firstName" @focus="selectInputText" />
             </div>
 
             <div class="mb-3">
               <label for="lastName">Last Name</label>
               <input class="form-control" type="text" name="lastName" id="lastName" required 
-               v-model="userFormData.lastName"/>
+               v-model="userFormData.lastName" @focus="selectInputText"/>
             </div>
 
             <div class="mb-3">
               <label for="emailAdress">E-mail</label>
               <input class="form-control" type="text" name="emailAdress" id="emailAdress" required 
-               v-model="userFormData.emailAdress"/>
+               v-model="userFormData.emailAdress" @focus="selectInputText"/>
             </div>
           </form>
 
